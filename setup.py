@@ -14,6 +14,6 @@ setup(
     scripts=glob("scripts/*"),
     entry_points='''
         [console_scripts]
-        BC-generator=barcode.generate_barcode_pdfs:cli
+        BC-generator=scripts.barcodes:cli
     '''
 )

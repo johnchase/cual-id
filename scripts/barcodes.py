@@ -1,5 +1,5 @@
 import click
-from generate_barcode_pdfs import get_barcodes
+# from barcode.generate_barcode_pdfs import get_barcodes
 
 @click.command()
 @click.option('-m', '--mapping', is_flag=True,

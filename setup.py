@@ -1,4 +1,6 @@
 from setuptools import setup
+from glob import glob
+
 
 
 setup(
@@ -9,8 +11,9 @@ setup(
         'Click',
         'reportlab'
     ],
+    scripts=glob("scripts/*"),
     entry_points='''
         [console_scripts]
-        BC-generator=barcodes:cli
+        BC-generator=barcode.generate_barcode_pdfs:cli
     '''
 )

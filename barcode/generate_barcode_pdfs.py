@@ -12,8 +12,6 @@ __email__ = "chasejohnh@gmail.com"
 __status__ = "Development"
 
 
-# from qcli import (parse_command_line_parameters,
-#                   make_option)
 from reportlab.graphics.barcode import code128
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
@@ -24,17 +22,12 @@ from os.path import exists
 
 def get_barcodes(input_fp, output_fp, mapping, columns=4, rows=9):
 
-
-    in_table = [l.strip().split('\t') for l in input_fp]
-
-    if mapping == True:
-        if in_table[0][0] != '#SampleID':
-            print "The first column in the metadata file is not SampleID!"
-            exit(1)
+    if len(mapping) != 0:
+        in_table = [l.strip().split('\t') for l in input_fp
+                    if not l.startswith(mapping)]
     else:
-        pass
+        in_table = [l.strip().split('\t') for l in input_fp]
 
-    print in_table
     barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)
 
     #x coordinates

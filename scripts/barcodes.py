@@ -1,9 +1,10 @@
 import click
-# from barcode.generate_barcode_pdfs import get_barcodes
+
+from barcode.generate_barcode_pdfs import get_barcodes
 
 @click.command()
-@click.option('-m', '--mapping', is_flag=True,
-              help='Pass if input is QIIME mapping file')
+@click.option('-m', '--mapping', type=str, multiple=True,
+              help='Pass if comment lines should be ignored')
 @click.argument('input', type=click.File('U'), required=False)
 @click.argument('output', type=click.File('w'), required=False)
 def cli(input, output, mapping):

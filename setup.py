@@ -9,7 +9,8 @@ setup(
     py_modules=['barcodes'],
     install_requires=[
         'Click',
-        'reportlab'
+        'reportlab',
+        'pandas'
     ],
     scripts=glob("scripts/*"),
     entry_points='''

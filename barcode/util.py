@@ -9,10 +9,12 @@ from reportlab.pdfgen import canvas
 import os
 from sys import exit
 from os.path import exists
+import pandas as pd
 
-def get_ids(input_fp, comment, sep, column):
+def get_ids(input_fh, comment, sep, column):
 
-    id_df = pd.read_csv(fh, sep=sep, comment=comment)
+    id_df = pd.read_csv(input_fh, sep=sep, comment=comment)
+
     if column:
         id_list = id_df[column]
     else:
@@ -23,6 +25,8 @@ def get_ids(input_fp, comment, sep, column):
 
 
 def get_barcodes(input_fp, output_fp, comment, sep, column, columns=4, rows=9):
+
+    barcode_ids = get_ids(input_fh, comment, sep, column)
 
     barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)
 

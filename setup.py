@@ -16,5 +16,8 @@ setup(
     entry_points='''
         [console_scripts]
         BC-generator=scripts.barcodes:cli
-    '''
+    ''',
+    test_suite='nose.collector',
+    extras_require={'test': ["nose >= 0.10.1", "pep8", "flake8"]},
+
 )

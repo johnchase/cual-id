@@ -2,16 +2,6 @@
 # File created on 14 Jun 2013
 from __future__ import division
 
-__author__ = "John Chase"
-__copyright__ = "Copyright 2013, The BiPy project"
-__credits__ = ["John Chase", "Daniel McDonald", "Greg Caporaso"]
-__license__ = "GPL"
-__version__ = "0.0.0"
-__maintainer__ = "John Chase"
-__email__ = "chasejohnh@gmail.com"
-__status__ = "Development"
-
-
 from reportlab.graphics.barcode import code128
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
@@ -20,7 +10,12 @@ import os
 from sys import exit
 from os.path import exists
 
-def get_barcodes(input_fp, output_fp, mapping, columns=4, rows=9):
+def get_barcode_ids(input_fp, comment, sep='tsv'):
+    return None
+
+
+
+def get_barcodes(input_fp, output_fp, comment, sep, columns=4, rows=9):
 
     if len(mapping) != 0:
         in_table = [l.strip().split('\t') for l in input_fp

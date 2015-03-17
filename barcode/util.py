@@ -10,18 +10,19 @@ import os
 from sys import exit
 from os.path import exists
 
-def get_barcode_ids(input_fp, comment, sep='tsv'):
-    return None
+def get_ids(input_fp, comment, sep, column):
 
-
-
-def get_barcodes(input_fp, output_fp, comment, sep, columns=4, rows=9):
-
-    if len(mapping) != 0:
-        in_table = [l.strip().split('\t') for l in input_fp
-                    if not l.startswith(mapping)]
+    id_df = pd.read_csv(fh, sep=sep, comment=comment)
+    if column:
+        id_list = id_df[column]
     else:
-        in_table = [l.strip().split('\t') for l in input_fp]
+        id_list = id_df.ix[:,0]
+
+    return id_list
+
+
+
+def get_barcodes(input_fp, output_fp, comment, sep, column, columns=4, rows=9):
 
     barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)
 
@@ -50,7 +51,7 @@ def get_barcodes(input_fp, output_fp, comment, sep, columns=4, rows=9):
         x = xy_coords[c][0]
         y = xy_coords[c][1]
         # Create the barcodes and sample_id text and draw them on the canvas
-        barcode = code128.Code128(sample_id, barWidth=.009*inch, barHeight=.4*inch)
+        barcode = code128.Code128(sample_id, barWidth=0.009*inch, barHeight=0.4*inch)
         barcode.drawOn(barcode_canvas, x, y)
         #the offset for the text will change automatically as x and y coordinates are
         #changed therefore the the following values do not need to be changed.

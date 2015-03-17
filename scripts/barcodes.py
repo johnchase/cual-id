@@ -7,7 +7,8 @@ from barcode.util import get_barcodes
               help="Pass 'tsv' if file separator is tab-separator, "
                    "pass 'csv' if file is comma separated (default=tsv)")
 @click.option('-c', '--comment', type=str, multiple=True,
-              help='Pass if comment lines should be ignored')
+              help='Pass if comment lines should be ignored. This will '
+                   'completely ignore the comment line including headers')
 @click.option('-l', '--column', type=str, default=None,
               help='The label of the column that contains the IDs to '
                    'generate barcodes for')

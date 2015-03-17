@@ -10,6 +10,7 @@ import os
 from sys import exit
 from os.path import exists
 import pandas as pd
+import numpy as np
 
 
 def get_ids(input_fh):
@@ -20,33 +21,35 @@ def get_ids(input_fh):
     return list(id_list)
 
 
-def get_barcodes(input_fh, output_fp, columns=4, rows=9):
+def get_x_y_coordinates(columns, rows, x_start, y_start):
 
-    in_table = get_ids(input_fh)
-
-    barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)
-
-    #  xcoordinates
-    x_coords = []
-    x_start = 0.0
-    for i in range(columns):
-        x_coords.append(round(x_start, 4))
-        x_start += 2.2
-
-    #  y coordinates
-    y_coords = []
-    y_start = 10
-    for i in range(rows):
-        y_coords.append(round(y_start, 4))
-        y_start -= 1.21
+    x_coords = np.arange(x_start, (columns*2.2), 2.2)
+    y_coords = np.arange(y_start, (y_start - (rows*1.21)), -1.21)
 
     xy_coords = []
     for x_coord in x_coords:
         for y_coord in y_coords:
             xy_coords.append((x_coord*inch, y_coord*inch))
+
+    return xy_coords
+
+
+def get_barcodes(input_fh,
+                 output_fp,
+                 columns=4,
+                 rows=9,
+                 x_start = 0,
+                 y_start = 10):
+
+    barcode_ids = get_ids(input_fh)
+
+    barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)
+
+    xy_coords = get_x_y_coordinates(columns, rows, x_start, y_start)
+
     c = 0
-    for record in in_table:
-        new_record = record[:]
+    for barcode_id in barcode_ids:
+        new_record = barcode_id[:]
         sample_id = new_record[0]
         x = xy_coords[c][0]
         y = xy_coords[c][1]

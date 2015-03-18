@@ -1,6 +1,5 @@
 import unittest
 from StringIO import StringIO
-import pandas as pd
 
 from barcode.util import get_ids
 

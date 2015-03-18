@@ -6,9 +6,6 @@ from reportlab.graphics.barcode import code128
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
-import os
-from sys import exit
-from os.path import exists
 import pandas as pd
 import numpy as np
 
@@ -38,8 +35,8 @@ def get_barcodes(input_fh,
                  output_fp,
                  columns=4,
                  rows=9,
-                 x_start = 0,
-                 y_start = 10):
+                 x_start=0,
+                 y_start=10):
 
     barcode_ids = get_ids(input_fh)
 

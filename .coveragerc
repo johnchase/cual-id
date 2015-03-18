@@ -4,9 +4,9 @@
 omit =
     */tests*
     */__init__.py
-source = ghosttree
+source = barcodes
 branch = True
-include = */ghosttree/*
+include = */barcodes/*
 
 [report]
 exclude_lines =

@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from glob import glob
 
 
@@ -12,6 +12,7 @@ setup(
         'reportlab',
         'pandas'
     ],
+    packages=find_packages(),
     scripts=glob("scripts/*"),
     entry_points='''
         [console_scripts]

@@ -12,12 +12,12 @@ before_install:
   # Update conda itself
   - conda update --yes conda
 install:
-  - conda create --yes -n env_name python=$PYTHON_VERSION pip flake8 nose scikit-bio
+  - conda create --yes -n env_name python=$PYTHON_VERSION pip flake8 nose
   - source activate env_name
   - pip install coveralls
   - pip install .
 script:
-  - nosetests ghosttree --with-coverage
-  - flake8 ghosttree setup.py
+  - nosetests barcodes --with-coverage
+  - flake8 barcodes setup.py
 after_success:
   - coveralls

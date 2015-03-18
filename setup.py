@@ -12,7 +12,6 @@ setup(
         'reportlab',
         'pandas'
     ],
-    engine='python',
     scripts=glob("scripts/*"),
     entry_points='''
         [console_scripts]

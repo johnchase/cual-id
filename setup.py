@@ -4,7 +4,7 @@ from glob import glob
 
 
 setup(
-    name='generate-barcodes',
+    name='barcodes',
     version='0.0',
     py_modules=['barcodes'],
     install_requires=[

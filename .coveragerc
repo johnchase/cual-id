@@ -4,9 +4,9 @@
 omit =
     */tests*
     */__init__.py
-source = barcode
+source = bcgenerator
 branch = True
-include = */barcode/util.py*
+include = */bcgenerator/*
 
 [report]
 exclude_lines =

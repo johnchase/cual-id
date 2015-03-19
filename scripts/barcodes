@@ -1,6 +1,6 @@
 import click
 
-from barcode.util import get_barcodes
+from bcgenerator.util import get_barcodes
 
 
 @click.command()

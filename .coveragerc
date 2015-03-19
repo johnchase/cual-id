@@ -6,7 +6,7 @@ omit =
     */__init__.py
 source = barcode
 branch = True
-include = */barcode/*
+include = */barcode/util.py*
 
 [report]
 exclude_lines =

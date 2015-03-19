@@ -4,9 +4,9 @@
 omit =
     */tests*
     */__init__.py
-source = barcodes
+source = barcode
 branch = True
-include = */barcodes/*
+include = */barcode/*
 
 [report]
 exclude_lines =

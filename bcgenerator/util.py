@@ -51,7 +51,7 @@ def get_barcodes(input_fh,
                                   barHeight=0.4*inch)
 
         barcode.drawOn(barcode_canvas, x, y)
-
+        barcode_canvas.setFont("Helvetica", 8)
         barcode_canvas.drawString((x + .47 * inch), (y - .15 * inch),
                                   sample_id)
         if c < ((rows*columns) - 1):

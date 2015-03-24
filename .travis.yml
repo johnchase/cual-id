@@ -17,7 +17,7 @@ install:
   - pip install coveralls
   - pip install .
 script:
-  - nosetests barcode --with-coverage
-  - flake8 barcode setup.py
+  - nosetests bcgenerator/ --with-coverage
+  - flake8 bcgenerator setup.py
 after_success:
   - coveralls

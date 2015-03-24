@@ -4,7 +4,7 @@ Barcode-pdf-generator
 [![BuildStatus](https://travis-ci.org/johnchase/Barcode-pdf-generator.svg?branch=master)](https://travis-ci.org/johnchase/Barcode-pdf-generator)
 [![Coverage Status](https://coveralls.io/repos/johnchase/Barcode-pdf-generator/badge.svg)](https://coveralls.io/r/johnchase/Barcode-pdf-generator)
 
-Barcode Generator is a tool to generate pdfs with barcodes. These will likely be used for sticker sheets. Currently the only sticker sheet format supported is a 4 by 9 sheet.
+Barcode Generator is a tool to generate pdfs with barcodes. These will likely be used for sticker sheets. Currently the only sticker sheet format supported is a 4 by 9 sheet such as Electronic Imaging Materials&copy; #80402 label sheets. 
 
 To use Barcode-pdf-generator first clone this repository then run:
 

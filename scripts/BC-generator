@@ -9,7 +9,6 @@ from bcgenerator.util import get_barcodes
 def cli(input, output):
     """This scripts generates a pdf of barcodes"""
     get_barcodes(input, output)
-    print "hello world"
 
 if __name__ == '__main__':
     cli()

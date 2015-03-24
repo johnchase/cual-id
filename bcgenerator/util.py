@@ -37,7 +37,6 @@ def get_barcodes(input_fh,
                  rows=9,
                  x_start=0,
                  y_start=10):
-    print "hello World"
     sample_ids = get_ids(input_fh)
 
     barcode_canvas = canvas.Canvas(output_fp, pagesize=letter)

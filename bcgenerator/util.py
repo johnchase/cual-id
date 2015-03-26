@@ -3,7 +3,6 @@
 from __future__ import division
 
 from reportlab.graphics.barcode import code128
-from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
 import pandas as pd
@@ -56,11 +55,9 @@ def get_barcodes(input_fh,
         # coordinates are
         # changed therefore the the following values do not need to be changed.
 
-
         barcode_canvas.setFont("Helvetica", 8)
         barcode_canvas.drawString((x + 12 * mm), (y - 4 * mm),
                                   sample_id)
-
 
         if c < ((rows*columns) - 1):
             c += 1

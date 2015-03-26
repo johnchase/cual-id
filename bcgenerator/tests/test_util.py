@@ -1,6 +1,5 @@
 import unittest
 from StringIO import StringIO
-from reportlab.lib.units import mm
 from bcgenerator.util import get_ids, get_x_y_coordinates
 
 

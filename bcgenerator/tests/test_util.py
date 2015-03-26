@@ -1,6 +1,6 @@
 import unittest
 from StringIO import StringIO
-
+from reportlab.lib.units import mm
 from bcgenerator.util import get_ids, get_x_y_coordinates
 
 
@@ -20,10 +20,10 @@ class GetIds(unittest.TestCase):
         x_start = 0
         y_start = 10
         obs = get_x_y_coordinates(columns, rows, x_start, y_start)
-        exp = [(0.0, 720.0),
-               (0.0, 632.87999999999988),
-               (158.40000000000001, 720.0),
-               (158.40000000000001, 632.87999999999988)]
+        exp = [(0.0, 28.346456692913389),
+               (0.0, -52.15748031496063),
+               (147.96850393700791, 28.346456692913389),
+               (147.96850393700791, -52.15748031496063)]
         self.assertEqual(obs, exp)
 
 id_file = """#SampleID

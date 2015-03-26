@@ -17,4 +17,4 @@ In order create a pdf of barcodes for a list of sample IDs from a tab separated 
 
         BC-generator foo_map.txt bar.pdf
 
-When printing PDFs make sure to check `Fit` or `Scale to Fit` in the print dialog box. 
+When printing PDFs make sure to check `Actual Size` in the print dialog box. 

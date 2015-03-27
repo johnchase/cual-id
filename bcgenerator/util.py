@@ -19,8 +19,8 @@ def get_ids(input_fh):
 
 def get_x_y_coordinates(columns, rows, x_start, y_start):
 
-    x_coords = np.arange(x_start, (columns*52.2), 52.2)
-    y_coords = np.arange(y_start, (y_start - (rows*28.4)), -28.4)
+    x_coords = np.arange(x_start, (columns*51.6), 51.6)
+    y_coords = np.arange(y_start, (y_start - (rows*28.42)), -28.42)
 
     xy_coords = []
     for x_coord in x_coords:
@@ -34,8 +34,8 @@ def get_barcodes(input_fh,
                  output_fp,
                  columns=4,
                  rows=9,
-                 x_start=5.2,
-                 y_start=249):
+                 x_start=1.9,
+                 y_start=257.2):
 
     sample_ids = get_ids(input_fh)
 

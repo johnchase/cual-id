@@ -11,9 +11,11 @@ def cli():
 @click.argument('output', type=click.File('w'), required=False)
 def barcode_generator(input, output):
     """This scripts generates a pdf of barcodes"""
-    get_barcodes(input, output)
+    barcodes = get_barcodes(input, output)
+    barcodes.save()
 
 @cli.command("sample-generator")
+@click.argument('input', type=click.File('U'), required=True)
 @click.argument('output_sample_ids', type=click.File('w'), required=False)
 @click.argument('output_barcodes', type=click.File('w'), required=False)
 @click.option("-b", "--generate-barcode-file", default=False)

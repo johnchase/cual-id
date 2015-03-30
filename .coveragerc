@@ -4,6 +4,8 @@
 omit =
     */tests*
     */__init__.py
+    *IDgenerator.py*
+    *test_IDgenerator.py*
 source = bcgenerator
 branch = True
 include = */bcgenerator/*
@@ -14,7 +16,3 @@ exclude_lines =
     def __repr__
     raise NotImplementedError
     if __name__ == .__main__.:
-omit =
-    */tests*
-    */__init__.py
-    *IDgenerator.py*

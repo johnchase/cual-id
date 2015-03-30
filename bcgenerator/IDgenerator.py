@@ -1,5 +1,6 @@
 import time
 
+
 def base10_to_base36(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     """Converts an integer to a base36 string."""
     if not isinstance(number, (int, long)):
@@ -21,8 +22,10 @@ def base10_to_base36(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
 
     return sign + base36
 
+
 def base36_to_base10(number):
     return int(number, 36)
+
 
 def encode(timestamp, mod_scalar=36893488147419103239,
            mod=100000000000000000000):
@@ -30,9 +33,11 @@ def encode(timestamp, mod_scalar=36893488147419103239,
     encoded_b36 = base10_to_base36(encoded)
     return encoded, encoded_b36
 
+
 def decode(encoded, mod_scalar_inv=97982421746426015159,
            mod=100000000000000000000):
-     return (encoded * mod_scalar_inv) % mod
+    return (encoded * mod_scalar_inv) % mod
+
 
 def get_mapping_file(number_of_ids):
     mapping_ids = []

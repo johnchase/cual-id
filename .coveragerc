@@ -4,8 +4,6 @@
 omit =
     */tests*
     */__init__.py
-    *IDgenerator.py*
-    *test_IDgenerator.py*
 source = bcgenerator
 branch = True
 include = */bcgenerator/*

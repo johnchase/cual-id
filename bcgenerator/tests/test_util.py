@@ -28,7 +28,6 @@ class GetIds(unittest.TestCase):
 
     def test_get_barcodes(self):
         barcodes = get_barcodes(self.id_file, 'test_file')
-        print barcodes
         self.assertTrue(barcodes.pageHasData)
 
 

@@ -1,6 +1,8 @@
 import unittest
 from StringIO import StringIO
-from bcgenerator.util import get_ids, get_x_y_coordinates
+from tempfile import NamedTemporaryFile, mkdtemp
+from bcgenerator.util import (get_ids, get_x_y_coordinates,
+                              get_barcodes)
 
 
 class GetIds(unittest.TestCase):
@@ -23,6 +25,12 @@ class GetIds(unittest.TestCase):
                (146.2677165354331, 28.346456692913389),
                (146.2677165354331, -52.214173228346468)]
         self.assertEqual(obs, exp)
+
+    def test_get_barcodes(self):
+        barcodes = get_barcodes(self.id_file, 'test_file')
+        print barcodes
+        self.assertTrue(barcodes.pageHasData)
+
 
 id_file = """#SampleID
 Test_ID1

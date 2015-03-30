@@ -2,13 +2,23 @@ import click
 
 from bcgenerator.util import get_barcodes
 
+@click.group()
+def cli():
+    pass
 
-@click.command()
+@cli.command("barcode-generator")
 @click.argument('input', type=click.File('U'), required=True)
 @click.argument('output', type=click.File('w'), required=False)
-def cli(input, output):
+def barcode_generator(input, output):
     """This scripts generates a pdf of barcodes"""
     get_barcodes(input, output)
+
+@cli.command("sample-generator")
+@click.argument('output_sample_ids', type=click.File('w'), required=False)
+@click.argument('output_barcodes', type=click.File('w'), required=False)
+@click.option("-b", "--generate-barcode-file", default=False)
+def sample_id_generator(output_sample_ids, output_barcodes):
+    ids = get_barcodes()
 
 if __name__ == '__main__':
     cli()

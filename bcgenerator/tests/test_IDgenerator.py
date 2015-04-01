@@ -27,7 +27,7 @@ class IDGenerator(unittest.TestCase):
 
     def test_encode(self):
         obs = encode(999999)
-        exp = (51253930955819896761L, 'ATEIQ6KK5O0XL')
+        exp = (26589444225832484022L, '5M0IBBZ17246U')
         self.assertEqual(obs, exp)
 
     def test_decode(self):

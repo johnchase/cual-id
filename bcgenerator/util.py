@@ -11,15 +11,12 @@ import numpy as np
 
 def get_ids(input_fh):
 
-    if type(input_fh) == file:
-        id_df = pd.read_csv(input_fh)
-        id_list = list(id_df.ix[:, 0])
-
-    elif type(input_fh) == str:
-        id_list = input_fh.split('\n')[1:]
-
-    else:
-        print type(input_fh)
+    # if type(input_fh) == file:
+    id_df = pd.read_csv(input_fh)
+    id_list = list(id_df.ix[:, 0])
+    #
+    # elif type(input_fh) == str:
+    #     id_list = input_fh.split('\n')[1:]
     return id_list
 
 

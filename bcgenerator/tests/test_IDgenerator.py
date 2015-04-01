@@ -37,7 +37,7 @@ class IDGenerator(unittest.TestCase):
 
     def test_get_mapping_file(self):
         obs = len(get_mapping_file(10).split())
-        exp = 10
+        exp = 11
         self.assertEqual(obs, exp)
 
 if __name__ == "__main__":

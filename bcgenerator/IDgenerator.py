@@ -29,7 +29,9 @@ def base36_to_base10(number):
 
 def encode(timestamp, mod_scalar=36893488147419103239,
            mod=100000000000000000000):
-    encoded = (timestamp * mod_scalar) % mod
+    encoded = (timestamp * mod) % mod_scalar
+    if encoded == 0:
+        print timestamp
     encoded_b36 = base10_to_base36(encoded)
     return encoded, encoded_b36
 
@@ -39,10 +41,10 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
     return (encoded * mod_scalar_inv) % mod
 
 
-def get_mapping_file(number_of_ids):
-    mapping_ids = []
+def get_mapping_file(number_of_ids, header='#SampleID'):
+    mapping_ids = [header]
     for i in range(number_of_ids):
         time_stamp = int(time.time() * 100000)
-        encoded_id = 'CL' + encode(time_stamp)[1]
+        encoded_id = 'CL:' + encode(time_stamp)[1]
         mapping_ids.append(encoded_id)
     return '\n'.join(mapping_ids)

@@ -1,6 +1,9 @@
+#!/usr/bin/env python
 import click
 
 from bcgenerator.util import get_barcodes
+from bcgenerator.IDgenerator import get_mapping_file
+from bcgenerator.idchecker import get_correct_ids
 
 @click.group()
 def cli():
@@ -15,12 +18,29 @@ def barcode_generator(input, output):
     barcodes.save()
 
 @cli.command("sample-generator")
-@click.argument('input', type=click.File('U'), required=True)
 @click.argument('output_sample_ids', type=click.File('w'), required=False)
-@click.argument('output_barcodes', type=click.File('w'), required=False)
-@click.option("-b", "--generate-barcode-file", default=False)
-def sample_id_generator(output_sample_ids, output_barcodes):
-    ids = get_barcodes()
+@click.option('-n', '--number-of-ids', type=int)
+@click.option('-b', '--output-barcode-file', type=click.File('w'),
+                                             required=False)
+def sample_id_generator(number_of_ids, output_sample_ids,
+                        output_barcode_file):
+    sample_ids = get_mapping_file(number_of_ids)
+    output_sample_ids.write(sample_ids)
+
+    if output_barcode_file != None:
+        barcodes = get_barcodes(sample_ids, output_barcode_file)
+        barcodes.save()
+
+@cli.command("ID-corrector")
+@click.argument('correct-input', type=click.File('U'), required=True)
+@click.argument('input-to-check', type=click.File('U'), required=True)
+@click.argument('output-file-path', type=click.File('w'), required=False)
+def correct_ids(correct_input, input_to_check,
+                        output_file_path):
+    fixedids, diff = get_correct_ids(correct_input, input_to_check)
+    output_file_path.write(diff)
+
+
 
 if __name__ == '__main__':
     cli()

@@ -1,8 +1,8 @@
 import unittest
 from StringIO import StringIO
 # from tempfile import NamedTemporaryFile, mkdtemp
-from bcgenerator.util import (get_ids, get_x_y_coordinates,
-                              get_barcodes)
+from cualid.util import (get_ids, get_x_y_coordinates,
+                         get_barcodes)
 
 
 class GetIds(unittest.TestCase):

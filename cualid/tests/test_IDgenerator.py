@@ -1,6 +1,6 @@
 import unittest
-from bcgenerator.IDgenerator import (base10_to_base36, base36_to_base10,
-                                     encode, decode, get_mapping_file)
+from cualid.IDgenerator import (base10_to_base36, base36_to_base10,
+                                encode, decode, get_mapping_file)
 
 
 class IDGenerator(unittest.TestCase):

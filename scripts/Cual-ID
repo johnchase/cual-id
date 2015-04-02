@@ -9,7 +9,7 @@ from cualid.idchecker import get_correct_ids
 def cli():
     pass
 
-@cli.command("barcode-IDs")
+@cli.command("Barcode-IDs")
 @click.argument('input', type=click.File('U'), required=True)
 @click.argument('output', type=click.File('w'), required=False)
 def barcode_generator(input, output):
@@ -17,7 +17,7 @@ def barcode_generator(input, output):
     barcodes = get_barcodes(input, output)
     barcodes.save()
 
-@cli.command("create-IDs")
+@cli.command("Create-IDs")
 @click.argument('output_sample_ids', type=click.File('w'), required=False)
 @click.option('-n', '--number-of-ids', type=int)
 @click.option('-b', '--output-barcode-file', type=click.File('w'),
@@ -31,7 +31,7 @@ def sample_id_generator(number_of_ids, output_sample_ids,
         barcodes = get_barcodes(sample_ids, output_barcode_file)
         barcodes.save()
 
-@cli.command("fix-IDs")
+@cli.command("Fix-IDs")
 @click.argument('correct-input', type=click.File('U'), required=True)
 @click.argument('input-to-check', type=click.File('U'), required=True)
 @click.argument('output-file-path', type=click.File('w'), required=False)

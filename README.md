@@ -2,7 +2,7 @@ Barcode-pdf-generator
 ====================
 
 [![BuildStatus](https://travis-ci.org/johnchase/Cual-ID.svg?branch=master)](https://travis-ci.org/johnchase/Cual-ID)
-[![Coverage Status](https://coveralls.io/repos/johnchase/Barcode-pdf-generator/badge.svg)](https://coveralls.io/r/johnchase/Barcode-pdf-generator)
+[![Coverage Status]([![Coverage Status](https://coveralls.io/repos/johnchase/Cual-ID/badge.svg)](https://coveralls.io/r/johnchase/Cual-ID))]
 
 Barcode Generator is a tool to generate pdfs with barcodes. Currently the only barcode format supported is [Code 128](http://en.wikipedia.org/wiki/Code_128). The barcodes generated will likely be used for label sheets. Currently the only sticker sheet format supported is a 4 by 9 sheet such as Electronic Imaging Materials&copy; #80402 label sheets.
 

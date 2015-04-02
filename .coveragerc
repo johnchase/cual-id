@@ -4,9 +4,9 @@
 omit =
     */tests*
     */__init__.py
-source = bcgenerator
+source = cualid
 branch = True
-include = */bcgenerator/*
+include = */cualid/*
 
 [report]
 exclude_lines =

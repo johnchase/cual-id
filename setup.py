@@ -10,7 +10,7 @@ description = ('Make a pdf out of barcodes')
 with open('README.md') as f:
     long_description = f.read()
 
-setup(name='BC-generator',
+setup(name='Cual-ID',
       version=__version__,
       description=description,
       long_description=long_description,

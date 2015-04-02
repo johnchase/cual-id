@@ -17,7 +17,7 @@ install:
   - pip install coveralls
   - pip install .
 script:
-  - nosetests bcgenerator/ --with-coverage
-  - flake8 bcgenerator setup.py
+  - nosetests cualid/ --with-coverage
+  - flake8 cualid setup.py
 after_success:
   - coveralls

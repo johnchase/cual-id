@@ -14,10 +14,8 @@ def get_correct_ids(correct_fh, diff_fh, match=.5):
             fixed_ids.append('\t'.join(line))
         else:
             fixed_id = get_close_matches(line[0], correct_ids, 1, match)
-            try:
-                line[0] = fixed_id[0]
-            except:
-                print line[0]
+            line[0] = fixed_id[0]
+            print line[0], fixed_id[0]
             line = '\t'.join(line)
             fixed_ids.append(line)
 

@@ -10,13 +10,13 @@ import numpy as np
 
 
 def get_ids(input_fh):
-
-    # if type(input_fh) == file:
-    id_df = pd.read_csv(input_fh)
-    id_list = list(id_df.ix[:, 0])
-    #
-    # elif type(input_fh) == str:
-    #     id_list = input_fh.split('\n')[1:]
+    print input_fh
+    try:
+        id_df = pd.read_csv(input_fh, sep='\t')
+        id_list = list(id_df.ix[:, 0])
+    except:
+        # elif type(input_fh) == unicode or type(input_fh) == str:
+        id_list = input_fh.split('\n').split('\t')[1:]
     return id_list
 
 

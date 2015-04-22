@@ -28,7 +28,7 @@ def sample_id_generator(number_of_ids, output_sample_ids,
     sample_ids = get_mapping_file(number_of_ids, id_prefix)
     output_sample_ids.write(sample_ids)
 
-    if output_barcode_file != None:
+    if output_barcode_file is not None:
         barcodes = get_barcodes(sample_ids, output_barcode_file)
         barcodes.save()
 

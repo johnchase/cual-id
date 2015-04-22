@@ -40,7 +40,7 @@ def sample_id_generator(number_of_ids, output_sample_ids,
 def correct_ids(correct_input, input_to_check,
                         output_file_path):
     """Correct IDs that have typos"""
-    fixedids, diffids = get_correct_ids(correct_input, input_to_check)
+    fixedids = get_correct_ids(correct_input, input_to_check)
     output_file_path.write(fixedids)
 
 

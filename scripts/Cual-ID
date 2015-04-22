@@ -13,7 +13,7 @@ def cli():
 @click.argument('input', type=click.File('U'), required=True)
 @click.argument('output', type=click.File('w'), required=False)
 def barcode_generator(input, output):
-    """This scripts generates a pdf of barcodes"""
+    """This script generates a pdf of barcodes"""
     barcodes = get_barcodes(input, output)
     barcodes.save()
 
@@ -25,6 +25,7 @@ def barcode_generator(input, output):
                                              required=False)
 def sample_id_generator(number_of_ids, output_sample_ids,
                         id_prefix, output_barcode_file):
+    """This script generates a file of sample IDs"""
     sample_ids = get_mapping_file(number_of_ids, id_prefix)
     output_sample_ids.write(sample_ids)
 
@@ -38,7 +39,8 @@ def sample_id_generator(number_of_ids, output_sample_ids,
 @click.argument('output-file-path', type=click.File('w'), required=False)
 def correct_ids(correct_input, input_to_check,
                         output_file_path):
-    fixedids = get_correct_ids(correct_input, input_to_check)
+    """Correct IDs that have typos"""
+    fixedids, diffids = get_correct_ids(correct_input, input_to_check)
     output_file_path.write(fixedids)
 
 

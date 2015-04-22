@@ -9,7 +9,7 @@ def get_correct_ids(correct_fh, diff_fh, match=.5):
     for line in diff_fh:
         line = line.strip().split('\t')
         if line[0].startswith('#'):
-            pass
+            fixed_ids.append(line)
         elif line[0] in correct_ids:
             fixed_ids.append('\t'.join(line))
         else:

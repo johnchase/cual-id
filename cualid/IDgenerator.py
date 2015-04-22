@@ -42,7 +42,7 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
 
 
 def get_mapping_file(number_of_ids, id_prefix=None, header='#SampleID'):
-    if id_prefix != None:
+    if id_prefix is not None:
         id_prefix = id_prefix + ':'
     else:
         id_prefix = ''

@@ -21,9 +21,6 @@ def get_correct_ids(correct_fh, diff_fh, match=.5):
             line = '\t'.join(line)
             fixed_ids.append(line)
 
-
-
-
     # for i in diff_ids:
     #     fixed_id = get_close_matches(i, correct_ids, 1, match)
     #     if len(fixed_id) != 1:

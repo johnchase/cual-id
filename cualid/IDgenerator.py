@@ -41,10 +41,15 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
     return (encoded * mod_scalar_inv) % mod
 
 
-def get_mapping_file(number_of_ids, header='#SampleID'):
+def get_mapping_file(number_of_ids, id_prefix=None, header='#SampleID'):
+    if id_prefix != None:
+        id_prefix = id_prefix + ':'
+    else:
+        id_prefix = ''
     mapping_ids = [header]
     for i in range(number_of_ids):
+        time.sleep(0.0001)
         time_stamp = int(time.time() * 100000)
-        encoded_id = 'CL:' + encode(time_stamp)[1]
+        encoded_id = '%s%s' % (id_prefix, encode(time_stamp)[1])
         mapping_ids.append(encoded_id)
     return '\n'.join(mapping_ids)

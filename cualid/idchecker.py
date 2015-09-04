@@ -1,5 +1,5 @@
-from difflib import get_close_matches, unified_diff
-import collections
+from difflib import get_close_matches
+
 
 def fix_ids(correct_input, input_to_check, show, all, thresh=.5):
     if all:
@@ -19,6 +19,7 @@ def fix_ids(correct_input, input_to_check, show, all, thresh=.5):
 
     err_codes = get_err_codes(broke_ids, fixed_ids)
     return format_ouput(broke_ids, fixed_ids, err_codes, show)
+
 
 def format_ouput(broke_ids, fixed_ids, err_codes, show):
     lines = []
@@ -44,11 +45,3 @@ def get_err_codes(broke_ids, fixed_ids, ):
             err_code = 'D' + err_code
         err_codes.append(err_code)
     return err_codes
-
-
-
-'''error codes
-    * D: duplicate
-+   * F: fixed
-+*    N: not fixable
-+*    V: valid (didn't need correction)'''

@@ -29,7 +29,7 @@ def get_barcodes(input,
                  rows=9,
                  x_start=1.9,
                  y_start=257.2):
-                 
+
     ids = [e.strip() for e in input]
     barcode_canvas = canvas.Canvas(output_fp)
     xy_coords = get_x_y_coordinates(columns, rows, x_start, y_start)
@@ -39,8 +39,8 @@ def get_barcodes(input,
         x = xy_coords[c][0]
         y = xy_coords[c][1]
 
-        #If we ever add new barcodes this should query a dictionary of
-        #different barcode generators
+        # If we ever add new barcodes this should query a dictionary of
+        # different barcode generators
         if barcode_type == 'none':
             pass
         else:

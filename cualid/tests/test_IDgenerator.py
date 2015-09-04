@@ -27,12 +27,12 @@ class IDGenerator(unittest.TestCase):
 
     def test_encode(self):
         obs = encode(999999)
-        exp = (26589444225832484022L, '5M0IBBZ17246U')
+        exp = (26589444225832484022, '5M0IBBZ17246U')
         self.assertEqual(obs, exp)
 
     def test_decode(self):
         obs = decode(1236781)
-        exp = 97549966513454363179L
+        exp = 97549966513454363179
         self.assertEqual(obs, exp)
 
     def test_get_mapping_file(self):

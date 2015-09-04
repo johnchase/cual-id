@@ -26,8 +26,7 @@ def barcode_generator(input, output_pdf, suppress_ids, barcode):
         click.ClickException("Please don't do that").show()
         exit()
 
-    ids = [e.strip() for e in input]
-    barcodes = get_barcodes(ids, output_pdf, suppress_ids, barcode)
+    barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
     barcodes.save()
 
 @create.command("ids")
@@ -42,13 +41,19 @@ def sample_id_generator(number_of_ids, prefix=None):
 @cli.command("fix")
 @click.argument('ids-to-be-corrected', type=click.File('U'), required=True)
 @click.option('--correct-ids', type=click.File('U'), required=True)
-@click.option('s', '--show', type=click.STRING, required=False)
-@click.option('a', '--all', is_flag=True, required=False)
-def correct_ids(correct_input, input_to_check):
+@click.option('-s', '--show', type=click.STRING, required=False)
+@click.option('-a', '--all', is_flag=True, required=False)
+def correct_ids(correct_ids, ids_to_be_corrected, show='DFN', all=False):
     """Compare a set of possibly invalid IDs against a correct set of IDs
     to identify errors in the IDs"""
 
-    corrected_ids =
+    corrected_ids = fix_ids(correct_ids,
+                            ids_to_be_corrected,
+                            show,
+                            all)
+
+    click.echo(corrected_ids)
+
 
 
 

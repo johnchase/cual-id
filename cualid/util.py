@@ -21,7 +21,7 @@ def get_x_y_coordinates(columns, rows, x_start, y_start):
     return xy_coords
 
 
-def get_barcodes(ids,
+def get_barcodes(input,
                  output_fp,
                  suppress_ids,
                  barcode_type='128',
@@ -29,7 +29,8 @@ def get_barcodes(ids,
                  rows=9,
                  x_start=1.9,
                  y_start=257.2):
-
+                 
+    ids = [e.strip() for e in input]
     barcode_canvas = canvas.Canvas(output_fp)
     xy_coords = get_x_y_coordinates(columns, rows, x_start, y_start)
 

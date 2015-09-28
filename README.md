@@ -36,8 +36,8 @@ cual-id create labels my-ids.txt --output-pdf my-labels.pdf --barcode none # don
 ### Correcting a list of ids
 
 ```bash
-cual-id fix examples/modified-ids.txt --correct-ids examples/ids.txt # report corrected, uncorrectable and duplicates, the default
-cual-id fix examples/modified-ids.txt --correct-ids examples/ids.txt --show FN # report fixed and un-fixable IDs
+cual-id fix examples/modified-ids.txt --correct-ids examples/ids.txt # report fixed, unfixable and duplicates, the default
+cual-id fix examples/modified-ids.txt --correct-ids examples/ids.txt --show FN # report only fixed and unfixable IDs
 ```
 
 #### Result code definitions

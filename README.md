@@ -1,7 +1,7 @@
 # cual-id
 
 [![BuildStatus](https://travis-ci.org/johnchase/cual-id.svg?branch=master)](https://travis-ci.org/johnchase/cual-id)
-[![Coverage Status](https://coveralls.io/repos/johnchase/Cual-ID/badge.svg)](https://coveralls.io/r/johnchase/Cual-ID)
+[![Coverage Status](https://coveralls.io/repos/johnchase/cual-id/badge.svg)](https://coveralls.io/r/johnchase/cual-id)
 
 ## Install
 ```bash

@@ -69,23 +69,3 @@ Variables: base of characters, length of ids, how often can we tolerate a duplic
 * maximize uniqueness across studies
 
 Ultimately we should probably be using a more sane approach for managing sample metadata. We hope that the ids that are generated with this system are a step in that direction that is compatible with what people are doing now, and that these ids would ultimately be compatible with better systems (e.g., as primary keys in a relational database).
-
-
-## Old text...
-
-**This repository is being very actively developed so things may not work as planned in every instance.**
-
-``cual-id`` is a tool to generate pdfs with barcodes. Currently the only barcode format supported is [Code 128](http://en.wikipedia.org/wiki/Code_128). The barcodes generated will likely be used for label sheets. Currently the only sticker sheet format supported is a 4 by 9 sheet such as Electronic Imaging Materials&copy; #80402 label sheets.
-
-## Install
-
-To use Barcode-pdf-generator first clone this repository then run:
-
-        pip install -e .
-Check the install and get script information:
-
-        BC-generator --help
-
-In order create a pdf of barcodes for a list of sample IDs from a tab separated text file:
-
-        BC-generator foo_map.txt bar.pdf

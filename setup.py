@@ -17,7 +17,5 @@ setup(name='Cual-ID',
       test_suite='nose.collector',
       packages=find_packages(),
       scripts=glob("scripts/*"),
-      install_requires=['click', 'reportlab'],
-      extras_require={'test': ["nose >= 0.10.1", "pep8", "flake8"],
-                      'doc': ["Sphinx"]},
+      install_requires=['click', 'reportlab']
       )

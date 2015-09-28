@@ -41,7 +41,7 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
     return (encoded * mod_scalar_inv) % mod
 
 
-def get_cual_ids(number_of_ids, prefix=None):
+def create_ids(number_of_ids, prefix=None):
     if prefix is None:
         prefix = ''
     time_prev = None

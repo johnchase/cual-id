@@ -1,5 +1,5 @@
 import unittest
-from cualid.IDgenerator import (base10_to_base36, base36_to_base10,
+from cualid.mint import (base10_to_base36, base36_to_base10,
                                 encode, decode)
 
 

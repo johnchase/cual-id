@@ -1,7 +1,6 @@
 import unittest
 from io import StringIO
-from cualid.util import (get_x_y_coordinates,
-                         get_barcodes)
+from cualid.label import (get_x_y_coordinates, get_barcodes)
 
 
 class GetIds(unittest.TestCase):

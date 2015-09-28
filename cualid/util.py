@@ -5,7 +5,6 @@ from __future__ import division
 from reportlab.graphics.barcode import code128
 from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
-import numpy as np
 
 
 def get_x_y_coordinates(columns, rows, x_start, y_start):

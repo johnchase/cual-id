@@ -1,47 +1,59 @@
 #!/usr/bin/env python
 import click
+import sys
 
 from cualid.util import get_barcodes
-from cualid.IDgenerator import get_mapping_file
-from cualid.idchecker import get_correct_ids
+from cualid.IDgenerator import get_cual_ids
+from cualid.idchecker import fix_ids
 
 @click.group()
 def cli():
     pass
 
-@cli.command("barcode-ids")
+@cli.group()
+def create():
+    """Command to create barcode labels or sample ids."""
+    pass
+
+@create.command("labels")
 @click.argument('input', type=click.File('U'), required=True)
-@click.argument('output', type=click.File('w'), required=False)
-def barcode_generator(input, output):
+@click.option('-o', '--output-pdf', type=click.STRING, required=True)
+@click.option('--suppress-ids', is_flag=True)
+@click.option('--barcode', type=click.STRING, required=False)
+def barcode_generator(input, output_pdf, suppress_ids, barcode):
     """This script generates a pdf of barcodes"""
-    barcodes = get_barcodes(input, output)
+    if suppress_ids and barcode == 'none':
+        click.ClickException("Please don't do that").show()
+        exit()
+
+    barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
     barcodes.save()
 
-@cli.command("create-ids")
-@click.argument('output_sample_ids', type=click.File('w'), required=False)
-@click.option('-n', '--number-of-ids', type=int)
-@click.option('-p', '--id-prefix', type=str)
-@click.option('-b', '--output-barcode-file', type=click.File('w'),
-                                             required=False)
-def sample_id_generator(number_of_ids, output_sample_ids,
-                        id_prefix, output_barcode_file):
+@create.command("ids")
+@click.argument('number-of-ids', type=int)
+@click.option('-p', '--prefix', type=str)
+def sample_id_generator(number_of_ids, prefix=None):
     """This script generates a file of sample IDs"""
-    sample_ids = get_mapping_file(number_of_ids, id_prefix)
-    output_sample_ids.write(sample_ids)
+    sample_ids = get_cual_ids(number_of_ids, prefix)
+    click.echo('\n'.join(sample_ids))
 
-    if output_barcode_file is not None:
-        barcodes = get_barcodes(sample_ids, output_barcode_file)
-        barcodes.save()
 
-@cli.command("fix-ids")
-@click.argument('correct-input', type=click.File('U'), required=True)
-@click.argument('input-to-check', type=click.File('U'), required=True)
-@click.argument('output-file-path', type=click.File('w'), required=False)
-def correct_ids(correct_input, input_to_check,
-                        output_file_path):
-    """Correct IDs that have typos"""
-    fixedids = get_correct_ids(correct_input, input_to_check)
-    output_file_path.write(fixedids)
+@cli.command("fix")
+@click.argument('ids-to-be-corrected', type=click.File('U'), required=True)
+@click.option('--correct-ids', type=click.File('U'), required=True)
+@click.option('-s', '--show', type=click.STRING, required=False)
+@click.option('-a', '--all', is_flag=True, required=False)
+def correct_ids(correct_ids, ids_to_be_corrected, show='DFN', all=False):
+    """Compare a set of possibly invalid IDs against a correct set of IDs
+    to identify errors in the IDs"""
+
+    corrected_ids = fix_ids(correct_ids,
+                            ids_to_be_corrected,
+                            show,
+                            all)
+
+    click.echo(corrected_ids)
+
 
 
 

@@ -8,16 +8,30 @@ from reportlab.pdfgen import canvas
 
 
 def get_x_y_coordinates(columns, rows, x_start, y_start):
+    x = 51.6
+    y = -28.42
+    for column in range(columns):
+        for row in range(rows):
+            x_coord = x_start + (x*column)
+            y_coord = y_start + (y*row)
+            yield (x_coord*mm, y_coord*mm)
 
-    x_coords = np.arange(x_start, (columns*51.6), 51.6)
-    y_coords = np.arange(y_start, (y_start - (rows*28.42)), -28.42)
 
-    xy_coords = []
-    for x_coord in x_coords:
-        for y_coord in y_coords:
-            xy_coords.append((x_coord*mm, y_coord*mm))
 
-    return xy_coords
+
+
+
+
+
+    # x_coords = np.arange(x_start, (columns*51.6), 51.6)
+    # y_coords = np.arange(y_start, (y_start - (rows*28.42)), -28.42)
+    #
+    # xy_coords = []
+    # for x_coord in x_coords:
+    #     for y_coord in y_coords:
+    #         xy_coords.append((x_coord*mm, y_coord*mm))
+    #
+    # return xy_coords
 
 
 def get_barcodes(input,
@@ -31,7 +45,7 @@ def get_barcodes(input,
 
     ids = [e.strip() for e in input]
     barcode_canvas = canvas.Canvas(output_fp)
-    xy_coords = get_x_y_coordinates(columns, rows, x_start, y_start)
+    xy_coords = list(get_x_y_coordinates(columns, rows, x_start, y_start))
 
     c = 0
     for id_ in ids:

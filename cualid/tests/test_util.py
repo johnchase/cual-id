@@ -17,7 +17,7 @@ class GetIds(unittest.TestCase):
         exp = [(0.0, 28.346456692913389), (0.0, -52.214173228346468),
                (146.2677165354331, 28.346456692913389),
                (146.2677165354331, -52.214173228346468)]
-        self.assertEqual(obs, exp)
+        self.assertEqual(list(obs), exp)
 
     def test_get_barcodes(self):
         barcodes = get_barcodes(self.id_file, 'test_file', suppress_ids=False)

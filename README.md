@@ -58,3 +58,10 @@ greg.5UXY8WYRSAH8W	greg.5UXY8WYRSAH8W	V
 greg.6GZ0BWVBVWBDA	greg.6GZ0BWVBVWBDA	D
 greg.6GZ0BVBVWBDA	greg.6GZ0BWVBVWBDA	DF
 ```
+
+## Python API
+
+```python
+from cualid import create_ids
+create_ids(10) # Creates a generator yielding 10 IDs
+```

@@ -41,12 +41,16 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
     return (encoded * mod_scalar_inv) % mod
 
 
-def create_ids(number_of_ids, prefix=None):
+def create_ids(n, prefix=None):
+    if n < 0:
+        raise ValueError(
+            'Number of IDs must be greater than 0, %d was passed' % n)
+
     if prefix is None:
         prefix = ''
     time_prev = None
     c = 0
-    while c < number_of_ids:
+    while c < n:
         time_stamp = int(time.time() * 100000)
         if time_stamp != time_prev:
             encoded_id = '%s%s' % (prefix, encode(time_stamp)[1])

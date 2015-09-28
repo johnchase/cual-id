@@ -42,12 +42,14 @@ def decode(encoded, mod_scalar_inv=97982421746426015159,
 
 
 def get_cual_ids(number_of_ids, prefix=None):
-    cual_ids = []
     if prefix is None:
         prefix = ''
-    for i in range(number_of_ids):
-        time.sleep(0.0001)
+    time_prev = None
+    c = 0
+    while c < number_of_ids:
         time_stamp = int(time.time() * 100000)
-        encoded_id = '%s%s' % (prefix, encode(time_stamp)[1])
-        cual_ids.append(encoded_id)
-    return cual_ids
+        if time_stamp != time_prev:
+            encoded_id = '%s%s' % (prefix, encode(time_stamp)[1])
+            c += 1
+            time_prev = time_stamp
+            yield encoded_id

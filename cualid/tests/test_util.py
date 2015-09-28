@@ -1,18 +1,12 @@
 import unittest
-from StringIO import StringIO
-from cualid.util import (get_ids, get_x_y_coordinates,
+from io import StringIO
+from cualid.util import (get_x_y_coordinates,
                          get_barcodes)
 
 
 class GetIds(unittest.TestCase):
     def setUp(self):
         self.id_file = StringIO(id_file)
-
-    def test_get_ids(self):
-
-        obs = get_ids(self.id_file)
-        exp = ['Test_ID1', 'Test_ID2']
-        self.assertEqual(obs, exp)
 
     def test_get_x_y_coordinates(self):
         columns = 2
@@ -26,7 +20,7 @@ class GetIds(unittest.TestCase):
         self.assertEqual(obs, exp)
 
     def test_get_barcodes(self):
-        barcodes = get_barcodes(self.id_file, 'test_file')
+        barcodes = get_barcodes(self.id_file, 'test_file', suppress_ids=False)
         self.assertTrue(barcodes.pageHasData)
 
 

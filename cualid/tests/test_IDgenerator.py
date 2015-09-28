@@ -1,6 +1,6 @@
 import unittest
 from cualid.IDgenerator import (base10_to_base36, base36_to_base10,
-                                encode, decode, get_mapping_file)
+                                encode, decode)
 
 
 class IDGenerator(unittest.TestCase):
@@ -33,11 +33,6 @@ class IDGenerator(unittest.TestCase):
     def test_decode(self):
         obs = decode(1236781)
         exp = 97549966513454363179
-        self.assertEqual(obs, exp)
-
-    def test_get_mapping_file(self):
-        obs = len(get_mapping_file(10).split())
-        exp = 11
         self.assertEqual(obs, exp)
 
 if __name__ == "__main__":

@@ -17,23 +17,6 @@ def get_x_y_coordinates(columns, rows, x_start, y_start):
             yield (x_coord*mm, y_coord*mm)
 
 
-
-
-
-
-
-
-    # x_coords = np.arange(x_start, (columns*51.6), 51.6)
-    # y_coords = np.arange(y_start, (y_start - (rows*28.42)), -28.42)
-    #
-    # xy_coords = []
-    # for x_coord in x_coords:
-    #     for y_coord in y_coords:
-    #         xy_coords.append((x_coord*mm, y_coord*mm))
-    #
-    # return xy_coords
-
-
 def get_barcodes(input,
                  output_fp,
                  suppress_ids,

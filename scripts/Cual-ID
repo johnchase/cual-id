@@ -2,9 +2,9 @@
 import click
 import sys
 
-from cualid.util import get_barcodes
-from cualid.IDgenerator import get_cual_ids
-from cualid.idchecker import fix_ids
+from cualid.label import get_barcodes
+from cualid.mint import create_ids
+from cualid.fix import fix_ids
 
 @click.group()
 def cli():
@@ -36,9 +36,6 @@ def sample_id_generator(number_of_ids, prefix=None):
     """This script generates a file of sample IDs"""
     for id_ in get_cual_ids(number_of_ids, prefix):
         click.echo(id_)
-    # sample_ids = get_cual_ids(number_of_ids, prefix)
-    # click.echo('\n'.join(sample_ids))
-
 
 @cli.command("fix")
 @click.argument('ids-to-be-corrected', type=click.File('U'), required=True)
@@ -48,15 +45,12 @@ def sample_id_generator(number_of_ids, prefix=None):
 def correct_ids(correct_ids, ids_to_be_corrected, show='DFN', all=False):
     """Compare a set of possibly invalid IDs against a correct set of IDs
     to identify errors in the IDs"""
-
     corrected_ids = fix_ids(correct_ids,
                             ids_to_be_corrected,
                             show,
                             all)
 
     click.echo(corrected_ids)
-
-
 
 
 if __name__ == '__main__':

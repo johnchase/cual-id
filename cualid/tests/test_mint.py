@@ -1,6 +1,6 @@
 import unittest
 from cualid.mint import (base10_to_base36, base36_to_base10,
-                                encode, decode)
+                         encode, decode)
 
 
 class IDGenerator(unittest.TestCase):

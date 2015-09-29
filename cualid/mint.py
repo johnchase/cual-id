@@ -1,59 +1,28 @@
-import time
+import uuid
+from difflib import get_close_matches
 
+def my_hamming(s1, s2):
+    count_diff = 0
+    for i1, i2 in zip(s1, s2):
+        if i1 != i2:
+            count_diff += 1
+    return count_diff
 
-def base10_to_base36(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
-    """Converts an integer to a base36 string."""
-    if not isinstance(number, (int)):
-        raise TypeError('number must be an integer')
+def within_d(query, existing, d=2):
+    for e in existing:
+        if my_hamming(query, e) <= d:
+            return True
+    return False
 
-    base36 = ''
-    sign = ''
-
-    if number < 0:
-        sign = '-'
-        number = -number
-
-    if 0 <= number < len(alphabet):
-        return sign + alphabet[number]
-
-    while number != 0:
-        number, i = divmod(number, len(alphabet))
-        base36 = alphabet[i] + base36
-
-    return sign + base36
-
-
-def base36_to_base10(number):
-    return int(number, 36)
-
-
-def encode(timestamp, mod_scalar=36893488147419103239,
-           mod=100000000000000000000):
-    encoded = (timestamp * mod) % mod_scalar
-    if encoded == 0:
-        print(timestamp)
-    encoded_b36 = base10_to_base36(encoded)
-    return encoded, encoded_b36
-
-
-def decode(encoded, mod_scalar_inv=97982421746426015159,
-           mod=100000000000000000000):
-    return (encoded * mod_scalar_inv) % mod
-
-
-def create_ids(n, prefix=None):
-    if n < 0:
-        raise ValueError(
-            'Number of IDs must be greater than 0, %d was passed' % n)
-
-    if prefix is None:
-        prefix = ''
-    time_prev = None
-    c = 0
-    while c < n:
-        time_stamp = int(time.time() * 100000)
-        if time_stamp != time_prev:
-            encoded_id = '%s%s' % (prefix, encode(time_stamp)[1])
-            c += 1
-            time_prev = time_stamp
-            yield encoded_id
+def create_ids(n, id_length, distance=2):
+    uuids = set()
+    hrids = set()
+    while len(hrids) < n:
+        uuid_ = uuid.uuid4()
+        hrid = uuid_.hex[-id_length:]
+        if within_d(hrid, hrids):
+            pass
+        else:
+            uuids.add(uuid_)
+            hrids.add(hrid)
+    return hrids, uuids

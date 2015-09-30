@@ -1,5 +1,5 @@
 import uuid
-from difflib import get_close_matches
+
 
 def hamming(s1, s2):
     count_diff = 0
@@ -8,11 +8,13 @@ def hamming(s1, s2):
             count_diff += 1
     return count_diff
 
+
 def greater_than_distance(query, existing, d=2):
     for e in existing:
         if hamming(query, e) <= d:
             return False
     return True
+
 
 def create_ids(n, id_length, distance=2):
     uuids = []
@@ -23,4 +25,4 @@ def create_ids(n, id_length, distance=2):
         if greater_than_distance(hrid, hrids):
             uuids.append(uuid_)
             hrids.append(hrid)
-    return uuids, hrids
+            yield (uuid_, hrid)

@@ -34,8 +34,7 @@ def barcode_generator(input, output_pdf, suppress_ids, barcode):
 @click.option('-l', '--length', type=int, default=8, required=False)
 def sample_id_generator(number_of_ids, length):
     """This script generates a file of sample IDs"""
-    uuids, hrids = create_ids(number_of_ids, length)
-    for uuid_, hrid in zip(uuids, hrids):
+    for uuid_, hrid in create_ids(number_of_ids, length):
         click.echo("%s\t%s" %(uuid_, hrid))
 
 @cli.command("fix")

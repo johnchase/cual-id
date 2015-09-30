@@ -4,6 +4,14 @@ import itertools
 from cualid import create_ids
 from cualid.mint import greater_than_distance
 
+
+class TestCreateIDS(unittest.TestCase):
+    def test_create_ids(self):
+        self.assertEqual(len(list(create_ids(10, 5))), 10)
+        self.assertEqual(len(list(create_ids(0, 3))), 0)
+        self.assertEqual(len(list(create_ids(1, 6))), 1)
+
+
 class TestWithinD(unittest.TestCase):
 
     def test_empty(self):

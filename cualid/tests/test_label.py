@@ -23,9 +23,9 @@ class GetIds(unittest.TestCase):
         self.assertTrue(barcodes.pageHasData)
 
 
-id_file = """#SampleID
-Test_ID1
-Test_ID2"""
+id_file = """8f648a23-9975-4af9-98fe-5df4eb98da0e	eb98da0e
+c7545b8a-fcf2-484e-846b-2c7acde1179c	cde1179c
+"""
 
 if __name__ == "__main__":
     unittest.main()

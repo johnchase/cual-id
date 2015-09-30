@@ -41,9 +41,9 @@ def sample_id_generator(number_of_ids, length):
 @cli.command("fix")
 @click.argument('ids-to-be-corrected', type=click.File('U'), required=True)
 @click.option('--correct-ids', type=click.File('U'), required=True)
-@click.option('-s', '--show', type=click.STRING, required=False)
-@click.option('-a', '--all', is_flag=True, required=False)
-def correct_ids(correct_ids, ids_to_be_corrected, show='DFN', all=False):
+@click.option('-s', '--show', type=click.STRING, default='DFN', required=False)
+@click.option('-a', '--all', is_flag=True, default=False, required=False)
+def correct_ids(correct_ids, ids_to_be_corrected, show, all):
     """Compare a set of possibly invalid IDs against a correct set of IDs
     to identify errors in the IDs"""
     corrected_ids = fix_ids(correct_ids,

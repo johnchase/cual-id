@@ -4,7 +4,7 @@ import sys
 
 from cualid.label import get_barcodes
 from cualid.mint import create_ids
-from cualid.fix import fix_ids
+from cualid.fix import fix_ids, format_output
 
 @click.group()
 def cli():
@@ -45,12 +45,10 @@ def sample_id_generator(number_of_ids, length):
 def correct_ids(correct_ids, ids_to_be_corrected, show, all):
     """Compare a set of possibly invalid IDs against a correct set of IDs
     to identify errors in the IDs"""
-    corrected_ids = fix_ids(correct_ids,
-                            ids_to_be_corrected,
-                            show,
-                            all)
-
-    click.echo(corrected_ids)
+    if all:
+        show = 'DFNV'
+    for line in format_output(fix_ids(correct_ids, ids_to_be_corrected), show):
+        click.echo(line)
 
 
 if __name__ == '__main__':

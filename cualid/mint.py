@@ -10,9 +10,9 @@ def hamming(s1, s2):
 
 def within_d(query, existing, d=2):
     for e in existing:
-        if hamming(query, e) <= d:
+        if my_hamming(query, e) <= d:
             return False
-    return False
+    return True
 
 def create_ids(n, id_length, distance=2):
     uuids = []

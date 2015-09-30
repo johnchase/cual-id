@@ -1,7 +1,7 @@
 import uuid
 from difflib import get_close_matches
 
-def my_hamming(s1, s2):
+def hamming(s1, s2):
     count_diff = 0
     for i1, i2 in zip(s1, s2):
         if i1 != i2:
@@ -10,19 +10,19 @@ def my_hamming(s1, s2):
 
 def within_d(query, existing, d=2):
     for e in existing:
-        if my_hamming(query, e) <= d:
-            return True
+        if hamming(query, e) <= d:
+            return False
     return False
 
 def create_ids(n, id_length, distance=2):
-    uuids = set()
-    hrids = set()
+    uuids = []
+    hrids = []
     while len(hrids) < n:
         uuid_ = uuid.uuid4()
         hrid = uuid_.hex[-id_length:]
         if within_d(hrid, hrids):
             pass
         else:
-            uuids.add(uuid_)
-            hrids.add(hrid)
-    return hrids, uuids
+            uuids.append(uuid_)
+            hrids.append(hrid)
+    return uuids, hrids

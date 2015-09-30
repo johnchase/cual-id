@@ -5,8 +5,9 @@ def fix_ids(correct_input, input_to_check, show, all, thresh=.5):
     if all:
         show = 'DFNV'
 
-    corr_ids = [e.strip() for e in correct_input]
-    broke_ids = [e.strip() for e in input_to_check]
+    corr_ids = [e.strip().split('\t')[1] for e in correct_input]
+
+    broke_ids = [e.strip().split('\t')[0] for e in input_to_check]
 
     fixed_ids = []
     for broke_id in broke_ids:

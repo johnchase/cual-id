@@ -26,7 +26,7 @@ def get_barcodes(input,
                  x_start=1.9,
                  y_start=257.2):
 
-    ids = [e.strip() for e in input]
+    ids = [e.strip().split('\t')[1] for e in input]
     barcode_canvas = canvas.Canvas(output_fp)
     xy_coords = list(get_x_y_coordinates(columns, rows, x_start, y_start))
 

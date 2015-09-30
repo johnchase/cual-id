@@ -63,5 +63,5 @@ greg.6GZ0BVBVWBDA	greg.6GZ0BWVBVWBDA	DF
 
 ```python
 from cualid import create_ids
-create_ids(10) # Creates a generator yielding 10 IDs
+create_ids(10) # Creates a list of tuples containing a UUID and a cualid
 ```

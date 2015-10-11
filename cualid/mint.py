@@ -9,20 +9,25 @@ def hamming(s1, s2):
     return count_diff
 
 
-def greater_than_distance(query, existing, d=2):
+def at_least_distance(query, existing, d=3):
     for e in existing:
-        if hamming(query, e) <= d:
+        if hamming(query, e) < d:
             return False
     return True
 
 
-def create_ids(n, id_length, distance=2):
+def create_ids(n, id_length, min_distance=3, failure_threshold=0.99):
     uuids = []
     hrids = []
-    while len(hrids) < n:
+    failures = 0
+    trys = 1
+    while len(hrids) < n and failures/trys < failure_threshold:
+        trys += 1
         uuid_ = uuid.uuid4()
         hrid = uuid_.hex[-id_length:]
-        if greater_than_distance(hrid, hrids):
+        if at_least_distance(hrid, hrids, d=min_distance):
             uuids.append(uuid_)
             hrids.append(hrid)
             yield (uuid_, hrid)
+        else:
+            failures += 1

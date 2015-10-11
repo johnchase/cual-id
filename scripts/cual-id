@@ -32,10 +32,23 @@ def barcode_generator(input, output_pdf, suppress_ids, barcode):
 @create.command("ids")
 @click.argument('number-of-ids', type=int)
 @click.option('-l', '--length', type=int, default=8, required=False)
-def sample_id_generator(number_of_ids, length):
+@click.option('-f', '--fail-threshold', type=float, default=0.99, required=False)
+def sample_id_generator(number_of_ids, length, fail_threshold):
     """This script generates a file of sample IDs"""
-    for uuid_, hrid in create_ids(number_of_ids, length):
+    if fail_threshold >= 1:
+        raise ValueError("")
+    collected = 0
+    for uuid_, hrid in create_ids(number_of_ids, length,
+                                  failure_threshold=fail_threshold):
+        collected += 1
         click.echo("%s\t%s" %(uuid_, hrid))
+
+    if collected != number_of_ids:
+        click.echo(
+            "\033[1;31m"
+            "Could only collect %d out of %d.\nGreater than %f%% of the"
+            " generated CualIDs were not sufficiently unique."
+            "\033[0;0m" % (collected, number_of_ids, fail_threshold * 100), err=True)
 
 @cli.command("fix")
 @click.argument('ids-to-be-corrected', type=click.File('U'), required=True)

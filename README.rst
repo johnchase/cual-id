@@ -8,7 +8,7 @@ Install
 
 .. code:: bash
 
-   pip install cual-id
+install -c https://conda.anaconda.org/johnchase cual-id
 
 Usage
 =====

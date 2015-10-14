@@ -6,14 +6,18 @@ cual-id
 Install
 =======
 cual-id may be installed either with conda or pip
+
 .. code:: bash
 
     install -c https://conda.anaconda.org/johnchase cual-id
-or 
+
+
+or
 
 .. code:: bash
 
     pip install cual-id
+
 
 Usage
 =====

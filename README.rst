@@ -5,7 +5,7 @@ cual-id
 
 Install
 =======
-cual-id may be installed either with conda or pip
+cual-id may be installed either with conda or pip.
 
 .. code:: bash
 

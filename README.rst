@@ -5,10 +5,15 @@ cual-id
 
 Install
 =======
+cual-id may be installed either with conda or pip
+.. code:: bash
+
+    install -c https://conda.anaconda.org/johnchase cual-id
+or 
 
 .. code:: bash
 
-install -c https://conda.anaconda.org/johnchase cual-id
+    pip install cual-id
 
 Usage
 =====

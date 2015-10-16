@@ -14,14 +14,6 @@ Peer review is currently in progress
 
 Install
 =======
-cual-id may be installed either with conda or pip.
-
-.. code:: bash
-
-    conda install -c https://conda.anaconda.org/johnchase cual-id
-
-
-or
 
 .. code:: bash
 

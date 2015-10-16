@@ -2,7 +2,7 @@
 # copied and modified from https://github.com/biocore/scikit-bio
 from setuptools import find_packages, setup
 from glob import glob
-__version__ = "0.9.0"
+__version__ = "0.9.1"
 
 classes = """
     Development Status :: 4 - Beta

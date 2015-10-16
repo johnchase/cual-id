@@ -7,7 +7,7 @@ cual-id paper
 =============
 Preprint outlining implications and uses of cual-id.
 `cual-id globally unique, correctable, and human-friendly sample identifiers for comparative
--omics studies: <https://peerj.com/preprints/1431/>`__.
+-omics studies <https://peerj.com/preprints/1431/>`__.
 
 Peer review is currently in progress
 

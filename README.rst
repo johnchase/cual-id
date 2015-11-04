@@ -3,31 +3,50 @@ cual-id
 =======
 |Build Status| |Coverage Status|
 
-cual-id paper
-=============
-Preprint outlining implications and uses of cual-id.
-`cual-id globally unique, correctable, and human-friendly sample identifiers for comparative
--omics studies <https://peerj.com/preprints/1431/>`__.
-
-Peer review is currently in progress
-
-
 Install
 =======
+
+Miniconda
+---------
+
+We strongly recommend installing `cual-id` using [Miniconda](http://conda.pydata.org/miniconda.html) which greatly simplifies Python package management. To do this, you should first choose which version of Miniconda to install from [the install page](http://conda.pydata.org/miniconda.html). You can choose either the Python 2 or 3 version. After you've installed Miniconda, you should run:  
+
+.. code:: bash
+
+    conda create -c https://conda.anaconda.org/johnchase -n cual-id python=3 cual-id
+    
+After this completes (it should take less than a minute), you can activate your ``cual-id`` environment by running:
+
+.. code:: bash
+
+    source activate cual-id
+
+Then, to see the available ``cual-id`` commands, run:
+
+.. code:: bash
+
+    cual-id --help
+
+pip
+---
+
+If you prefer to install with pip, and already have a Python 3 development environment configured, you can do this with the following command:
 
 .. code:: bash
 
     pip install cual-id
-    
-or
-
-.. code:: bash
-
-    conda install -c https://conda.anaconda.org/johnchase cual-id
-
 
 Usage
 =====
+
+Activating your environment
+---------------------------
+
+If you installed cual-id using Miniconda, to start using cual-id you'll need to run the following command when you open a new terminal:
+
+.. code:: bash
+
+    source activate cual-id
 
 Getting help
 ------------
@@ -106,6 +125,15 @@ Python API
    from cualid import create_ids
    create_ids(10) # Creates a list of tuples containing a UUID and a cualid
 
+Citing cual-id
+==============
+
+cual-id is currently under review at mSystems. Our pre-print of that manuscript is available on PeerJ:
+
+`cual-id globally unique, correctable, and human-friendly sample identifiers for comparative
+-omics studies <https://peerj.com/preprints/1431/>`__.
+
+Please cite this pre-print if you use cual-id in any published work. 
 
 .. |Build Status| image:: https://travis-ci.org/johnchase/cual-id.svg?branch=master
    :target:  https://travis-ci.org/johnchase/cual-id

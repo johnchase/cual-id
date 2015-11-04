@@ -9,7 +9,7 @@ Install
 Miniconda
 ---------
 
-We strongly recommend installing `cual-id` using `Miniconda <http://conda.pydata.org/miniconda.html>`__. which greatly simplifies Python package management. To do this, you should first choose which version of Miniconda to install from `the install page <http://conda.pydata.org/miniconda.html>`__. You can choose either the Python 2 or 3 version. After you've installed Miniconda, you should run:  
+We strongly recommend installing `cual-id` using `Miniconda <http://conda.pydata.org/miniconda.html>`__. which greatly simplifies Python package management. To do this, you should first choose which version of Miniconda to install from `the install page <http://conda.pydata.org/docs/install/quick.html>`__. You can choose either the Python 2 or 3 version. After you've installed Miniconda, you should run:  
 
 .. code:: bash
 

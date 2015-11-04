@@ -1,7 +1,7 @@
 =======
 cual-id
 =======
-|Build Status| |Coverage Status|
+|Build Status| |Coverage Status| |Conda Install|
 
 Install
 =======
@@ -9,7 +9,7 @@ Install
 Miniconda
 ---------
 
-We strongly recommend installing `cual-id` using [Miniconda](http://conda.pydata.org/miniconda.html) which greatly simplifies Python package management. To do this, you should first choose which version of Miniconda to install from [the install page](http://conda.pydata.org/miniconda.html). You can choose either the Python 2 or 3 version. After you've installed Miniconda, you should run:  
+We strongly recommend installing `cual-id` using `Miniconda <http://conda.pydata.org/miniconda.html>`__. which greatly simplifies Python package management. To do this, you should first choose which version of Miniconda to install from `the install page <http://conda.pydata.org/miniconda.html>`__. You can choose either the Python 2 or 3 version. After you've installed Miniconda, you should run:  
 
 .. code:: bash
 
@@ -139,3 +139,5 @@ Please cite this pre-print if you use cual-id in any published work.
    :target:  https://travis-ci.org/johnchase/cual-id
 .. |Coverage Status| image:: https://coveralls.io/repos/johnchase/cual-id/badge.svg?branch=master&service=github
    :target:  https://coveralls.io/github/johnchase/cual-id?branch=master
+.. |Conda Install| image:: https://anaconda.org/johnchase/cual-id/badges/installer/conda.svg?branch=master
+   :target: https://anaconda.org/johnchase/cual-id

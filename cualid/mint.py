@@ -22,7 +22,6 @@ def create_ids(n, id_length,
                failure_threshold=0.99,
                existing_ids=None):
     if existing_ids:
-        existing_ids = parse_ids(existing_ids, 0)
         hrids = existing_ids
     else:
         hrids = []

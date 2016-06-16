@@ -28,7 +28,8 @@ def create_ids(n, id_length,
     initial_hrid_len = len(hrids)
     failures = 0
     trys = 1
-    while len(hrids) - initial_hrid_len < n and failures/trys < failure_threshold:
+    while (len(hrids) - initial_hrid_len < n and
+           failures/trys < failure_threshold):
         trys += 1
         uuid_ = uuid.uuid4()
         hrid = uuid_.hex[-id_length:]

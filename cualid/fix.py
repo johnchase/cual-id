@@ -1,10 +1,13 @@
 from difflib import get_close_matches
 
 
-def fix_ids(correct_input, input_to_check, thresh=.5):
-    corr_ids = [e.strip().split('\t')[1] for e in correct_input]
+def parse_ids(input_file, col):
+    return [e.strip().split('\t')[col] for e in input_file]
 
-    broke_ids = [e.strip().split('\t')[0] for e in input_to_check]
+
+def fix_ids(correct_input, input_to_check, thresh=.5):
+    corr_ids = parse_ids(correct_input, 1)
+    broke_ids = parse_ids(input_to_check, 0)
 
     seen = set()
     for broke_id in broke_ids:

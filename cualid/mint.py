@@ -1,4 +1,5 @@
 import uuid
+from fix import parse_ids
 
 
 def hamming(s1, s2):
@@ -16,12 +17,21 @@ def at_least_distance(query, existing, d=3):
     return True
 
 
-def create_ids(n, id_length, min_distance=3, failure_threshold=0.99):
+def create_ids(n, id_length,
+               min_distance=3,
+               failure_threshold=0.99,
+               existing_ids=None):
+    
+    existing_ids = parse_ids(existing_ids, 0)
     uuids = []
-    hrids = []
+    if existing_ids:
+        hrids = existing_ids
+    else:
+        hrids = []
+    hrid_len = len(hrids)
     failures = 0
     trys = 1
-    while len(hrids) < n and failures/trys < failure_threshold:
+    while len(hrids) - hrid_len < n and failures/trys < failure_threshold:
         trys += 1
         uuid_ = uuid.uuid4()
         hrid = uuid_.hex[-id_length:]

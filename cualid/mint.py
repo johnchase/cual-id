@@ -20,15 +20,15 @@ def create_ids(n, id_length,
                min_distance=3,
                failure_threshold=0.99,
                existing_ids=None):
-    if existing_ids:
+    if existing_ids is not None:
         hrids = existing_ids
     else:
         hrids = []
     uuids = []
-    hrid_len = len(hrids)
+    initial_hrid_len = len(hrids)
     failures = 0
     trys = 1
-    while len(hrids) - hrid_len < n and failures/trys < failure_threshold:
+    while len(hrids) - initial_hrid_len < n and failures/trys < failure_threshold:
         trys += 1
         uuid_ = uuid.uuid4()
         hrid = uuid_.hex[-id_length:]

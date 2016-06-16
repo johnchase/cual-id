@@ -1,5 +1,4 @@
 import uuid
-from cualid.fix import parse_ids
 
 
 def hamming(s1, s2):

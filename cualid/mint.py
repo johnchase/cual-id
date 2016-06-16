@@ -1,5 +1,5 @@
 import uuid
-from fix import parse_ids
+from cualid.fix import parse_ids
 
 
 def hamming(s1, s2):
@@ -21,13 +21,12 @@ def create_ids(n, id_length,
                min_distance=3,
                failure_threshold=0.99,
                existing_ids=None):
-    
-    existing_ids = parse_ids(existing_ids, 0)
-    uuids = []
     if existing_ids:
+        existing_ids = parse_ids(existing_ids, 0)
         hrids = existing_ids
     else:
         hrids = []
+    uuids = []
     hrid_len = len(hrids)
     failures = 0
     trys = 1

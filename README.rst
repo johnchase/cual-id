@@ -63,6 +63,9 @@ Creating a list of IDs
 
    cual-id create ids 42 # writes 42 ids to stdout
    cual-id create ids 42 > my-ids.txt # writes 42 ids to my-ids.txt
+   cual-id create ids 42 --existing-ids my-ids.txt # creates ids that do not
+   overlap with existing ids. Note this will only compare new ids to the first
+   column of the file
 
 
 

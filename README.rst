@@ -126,7 +126,7 @@ Python API
 .. code:: python
 
    from cualid import create_ids
-   create_ids(10) # Creates a list of tuples containing a UUID and a cualid
+   create_ids(10, 7) # Creates a list of tuples containing a UUID and a cualid
 
 Citing cual-id
 ==============

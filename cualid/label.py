@@ -17,7 +17,7 @@ def get_x_y_coordinates(columns, rows, x_start, y_start):
             yield (x_coord*mm, y_coord*mm)
 
 def get_x_y_small_coordinates(columns, rows, x_start, y_start):
-    x = 40
+    x = 36
     y = -15
     for column in range(columns):
         for row in range(rows):
@@ -26,7 +26,7 @@ def get_x_y_small_coordinates(columns, rows, x_start, y_start):
             yield (x_coord*mm, y_coord*mm)
 
 def barcode_gen(barcode_canvas, xy_coords, ids, 
-                barcode_type, suppress_ids, rows, columns):
+                barcode_type, suppress_ids, rows, columns, small):
     c = 0
     for id_ in ids:
         x = xy_coords[c][0]
@@ -41,11 +41,13 @@ def barcode_gen(barcode_canvas, xy_coords, ids,
                                       barHeight=11*mm)
 
             barcode.drawOn(barcode_canvas, x, y)
-            barcode_canvas.setFont("Helvetica", 8)
+            barcode_canvas.setFont("Helvetica", fontSize)
 
         if suppress_ids:
             barcode_canvas.drawString((x + 12 * mm), (y - 4 * mm), '')
         else:
+            if small:
+                barcode_canvas.setFont("Helvetica", 8)
             barcode_canvas.drawString((x + 12 * mm), (y - 4 * mm), id_)
 
         if c < ((rows*columns) - 1):
@@ -71,7 +73,7 @@ def get_barcodes(input,
     xy_coords = list(get_x_y_coordinates(columns, rows, x_start, y_start))
 
     return barcode_gen(barcode_canvas, xy_coords, ids, 
-                    barcode_type, suppress_ids, rows, columns)
+                    barcode_type, suppress_ids, rows, columns, False)
 
 def get_small_barcodes(input,
                  output_fp,
@@ -80,13 +82,13 @@ def get_small_barcodes(input,
                  columns=5,
                  rows=17,
                  x_start=1.9,
-                 y_start=285.2):
+                 y_start=275.2):
 
     ids = [e.strip().split('\t')[1] for e in input]
 
     barcode_canvas = canvas.Canvas(output_fp)
     xy_coords = list(get_x_y_small_coordinates(columns, rows, x_start, y_start))
     return barcode_gen(barcode_canvas, xy_coords, ids, 
-                    barcode_type, suppress_ids, rows, columns)
+                    barcode_type, suppress_ids, rows, columns, True)
     
 

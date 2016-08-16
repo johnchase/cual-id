@@ -3,7 +3,6 @@ import click
 import sys
 
 from cualid.label import get_barcodes
-from cualid.label import get_small_barcodes
 from cualid.mint import create_ids
 from cualid.fix import fix_ids, format_output, parse_ids
 
@@ -20,20 +19,15 @@ def create():
 @click.argument('input', type=click.File('U'), required=True)
 @click.option('-o', '--output-pdf', type=click.STRING, required=True)
 @click.option('--suppress-ids', is_flag=True)
-@click.option('--small', is_flag=True)
 @click.option('--barcode', type=click.STRING, required=False)
-def barcode_generator(input, output_pdf, suppress_ids, barcode, small):
+def barcode_generator(input, output_pdf, suppress_ids, barcode):
     """This script generates a pdf of barcodes"""
     if suppress_ids and barcode == 'none':
         click.ClickException("Please don't do that").show()
         exit()
-    if small:
-        barcodes = get_small_barcodes(input, output_pdf, suppress_ids, barcode)
-        barcodes.save()
-    else:
-        barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
-        barcodes.save()
-    
+
+    barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
+    barcodes.save()
 
 @create.command("ids")
 @click.argument('number-of-ids', type=int)
@@ -51,7 +45,7 @@ def sample_id_generator(number_of_ids, length, fail_threshold, existing_ids):
                                   failure_threshold=fail_threshold,
                                   existing_ids=existing_ids):
         collected += 1
-        click.echo("%s\t%s" %(hrid, uuid_))
+        click.echo("%s\t%s" %(uuid_, hrid))
 
     if collected != number_of_ids:
         click.echo(

@@ -16,6 +16,7 @@ def get_x_y_coordinates(columns, rows, x_start, y_start):
             y_coord = y_start + (y*row)
             yield (x_coord*mm, y_coord*mm)
 
+
 def get_x_y_small_coordinates(columns, rows, x_start, y_start):
     x = 38
     y = -15
@@ -25,9 +26,15 @@ def get_x_y_small_coordinates(columns, rows, x_start, y_start):
             y_coord = y_start + (y*row)
             yield (x_coord*mm, y_coord*mm)
 
-def barcode_gen(barcode_canvas, xy_coords, ids, 
-                barcode_type, suppress_ids,
-                rows, columns, small):
+
+def barcode_gen(barcode_canvas,
+                xy_coords,
+                ids,
+                barcode_type,
+                suppress_ids,
+                rows,
+                columns,
+                small):
     c = 0
     for id_ in ids:
         x = xy_coords[c][0]
@@ -73,23 +80,24 @@ def get_barcodes(input,
     barcode_canvas = canvas.Canvas(output_fp)
     xy_coords = list(get_x_y_coordinates(columns, rows, x_start, y_start))
 
-    return barcode_gen(barcode_canvas, xy_coords, ids, 
-                    barcode_type, suppress_ids, rows, columns, False)
+    return barcode_gen(barcode_canvas, xy_coords, ids,
+                       barcode_type, suppress_ids,
+                       rows, columns, False)
+
 
 def get_small_barcodes(input,
-                 output_fp,
-                 suppress_ids,
-                 barcode_type='128',
-                 columns=5,
-                 rows=17,
-                 x_start=7,
-                 y_start=275.2):
+                       output_fp,
+                       suppress_ids,
+                       barcode_type='128',
+                       columns=5,
+                       rows=17,
+                       x_start=7,
+                       y_start=275.2):
 
     ids = [e.strip().split('\t')[0] for e in input]
 
     barcode_canvas = canvas.Canvas(output_fp)
-    xy_coords = list(get_x_y_small_coordinates(columns, rows, x_start, y_start))
-    return barcode_gen(barcode_canvas, xy_coords, ids, 
-                    barcode_type, suppress_ids, rows, columns, True)
-    
-
+    xy_coords = list(get_x_y_small_coordinates(columns, rows,
+                                               x_start, y_start))
+    return barcode_gen(barcode_canvas, xy_coords, ids,
+                       barcode_type, suppress_ids, rows, columns, True)

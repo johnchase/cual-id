@@ -45,7 +45,7 @@ def sample_id_generator(number_of_ids, length, fail_threshold, existing_ids):
                                   failure_threshold=fail_threshold,
                                   existing_ids=existing_ids):
         collected += 1
-        click.echo("%s\t%s" %(uuid_, hrid))
+        click.echo("%s\t%s" %(hrid, uuid_))
 
     if collected != number_of_ids:
         click.echo(

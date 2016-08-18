@@ -6,7 +6,7 @@ def parse_ids(input_file, col):
 
 
 def fix_ids(correct_input, input_to_check, thresh=.5):
-    corr_ids = parse_ids(correct_input, 1)
+    corr_ids = parse_ids(correct_input, 0)
     broke_ids = parse_ids(input_to_check, 0)
 
     seen = set()

@@ -15,8 +15,9 @@ class TestCreateIDS(unittest.TestCase):
         result = list(create_ids(1000, 3))
         self.assertTrue(len(result) > 0)
         self.assertTrue(len(result) < 1000)
+
     def test_create_ids_API(self):
-        result = list(create_ids(100,7))
+        result = list(create_ids(100, 7))
         self.assertTrue(len(str(result[0][0])) < 10)
         self.assertTrue(len(str(result[0][1])) > 10)
 

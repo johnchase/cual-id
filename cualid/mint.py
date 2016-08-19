@@ -36,6 +36,6 @@ def create_ids(n, id_length,
         if at_least_distance(hrid, hrids, d=min_distance):
             uuids.append(uuid_)
             hrids.append(hrid)
-            yield (uuid_, hrid)
+            yield (hrid, uuid_)
         else:
             failures += 1

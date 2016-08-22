@@ -18,8 +18,9 @@ class TestCreateIDS(unittest.TestCase):
 
     def test_create_ids_API(self):
         result = list(create_ids(100, 7))
-        self.assertTrue(len(str(result[0][0])) < 10)
-        self.assertTrue(len(str(result[0][1])) > 10)
+        self.assertTrue(len(str(result[0][0])) == 7)
+        #It is length 36 because of the four - dividers
+        self.assertTrue(len(str(result[0][1])) == 36)
 
 
 class TestAtLeastDistance(unittest.TestCase):

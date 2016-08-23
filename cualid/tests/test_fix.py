@@ -1,7 +1,7 @@
 import unittest
 import io
 
-from cualid.fix import fix_ids, format_output, parse_ids
+from cualid.fix import fix_ids, format_output, parse_ids, get_err_code
 
 
 class TestFormatOutput(unittest.TestCase):
@@ -64,6 +64,12 @@ class TestFixIDs(unittest.TestCase):
         exp = ['23bb9', 'c0cab', '87696', '7869b', 'd50cc']
         self.assertEqual(parse_ids(identical, 0), exp)
         self.assertEqual(parse_ids(correct1, 0), exp)
+
+    def test_get_err_code(self):
+        fixed_id = "x"
+        broke_id = "z"
+        seen = ["y", "x"]
+        self.assertEqual(get_err_code(broke_id, fixed_id, seen), "DF")
 
 correct1 = io.StringIO("23bb9\tc0b5d3ae-d2d4-4aa5-bd51-76c93e223bb9\n"
                        "c0cab\t0b95a10f-0610-434f-9734-4d2ac02c0cab\n"

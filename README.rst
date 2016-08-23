@@ -10,7 +10,7 @@ Please cite this article if you use cual-id in any published work with the
 following citation:
 
   **cual-id: Globally Unique, Correctable, and Human-Friendly Sample Identifiers for Comparative Omics Studies**
-  John H. Chase, Evan Bolyen, Jai Ram Rideout, J. Gregory Caporaso
+  John H. Chase, Evan Bolyen, Jai Ram Rideout, J. Gregory Caporaso  
   mSystems Dec 2015, 1 (1) e00010-15; DOI: 10.1128/mSystems.00010-15
 
 `cual-id: Globally Unique, Correctable, and Human-Friendly Sample Identifiers for Comparative Omics Studies <http://msystems.asm.org/content/1/1/e00010-15 />`__.

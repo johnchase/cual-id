@@ -3,6 +3,7 @@ import itertools
 
 from cualid import create_ids
 from cualid.mint import at_least_distance
+import uuid
 
 
 class TestCreateIDS(unittest.TestCase):
@@ -17,10 +18,10 @@ class TestCreateIDS(unittest.TestCase):
         self.assertTrue(len(result) < 1000)
 
     def test_create_ids_API(self):
-        result = list(create_ids(100, 7))
-        self.assertTrue(len(str(result[0][0])) == 7)
-        """It is length 36 because of the four - dividers"""
-        self.assertTrue(len(str(result[0][1])) == 36)
+        id_length = 7
+        result = list(create_ids(100, id_length))
+        self.assertTrue(len(result[0][0]) == id_length)
+        self.assertTrue(type(result[0][1]) == uuid.UUID)
 
 
 class TestAtLeastDistance(unittest.TestCase):

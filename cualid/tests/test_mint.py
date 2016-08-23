@@ -3,6 +3,7 @@ import itertools
 
 from cualid import create_ids
 from cualid.mint import at_least_distance
+import uuid
 
 
 class TestCreateIDS(unittest.TestCase):
@@ -15,6 +16,12 @@ class TestCreateIDS(unittest.TestCase):
         result = list(create_ids(1000, 3))
         self.assertTrue(len(result) > 0)
         self.assertTrue(len(result) < 1000)
+
+    def test_create_ids_API(self):
+        id_length = 7
+        result = list(create_ids(100, id_length))
+        self.assertTrue(len(result[0][0]) == id_length)
+        self.assertTrue(type(result[0][1]) == uuid.UUID)
 
 
 class TestAtLeastDistance(unittest.TestCase):

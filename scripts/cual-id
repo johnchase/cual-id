@@ -23,7 +23,7 @@ def create():
 def barcode_generator(input, output_pdf, suppress_ids, barcode):
     """This script generates a pdf of barcodes"""
     if suppress_ids and barcode == 'none':
-        click.ClickException("Please don't do that").show()
+        click.ClickException("Passing --supress-ids and --barcode none is not valid").show()
         exit()
 
     barcodes = get_barcodes(input, output_pdf, suppress_ids, barcode)
